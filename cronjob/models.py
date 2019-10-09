@@ -1,26 +1,28 @@
 from django.db import models
+from django.conf import settings
+from django.utils import timezone
 
 
 class Cronjob(models.Model):
     #title, adress
-    title = models.CharField(max_length=30)
-    url = models.TextField(max_length=256)
+    title = models.CharField(max_length=30, null=False, default='')
+    url = models.CharField(max_length=256, null=False, default='')
 
     #login
     userName = models.CharField(max_length=30, null=False, default='')
     password = models.CharField(max_length=30, null=False, default='')
 
     #set time and date for interval
-    timeIntervalMinutes = models.TimeField(default='')
-    timeIntervalTime = models.TimeField(default='')
-    timeIntervalDay = models.TimeField(default='')
-    timeIntervalDayTime = models.TimeField(default='')
-    userDefined = models.BooleanField(default='')
+    timeIntervalMinutes = models.CharField(max_length=30, null=True, default='')
+    timeIntervalTime = models.CharField(max_length=30, null=True, default='')
+    timeIntervalDay = models.CharField(max_length=30, null=True, default='')
+    timeIntervalDayTime = models.CharField(max_length=30, null=True, default='')
+    userDefined = models.BooleanField(default=False)
 
     #messages
-    messageFail = models.BooleanField(default='')
-    messageSuccess = models.BooleanField(default='')
-    messageToManyFailures = models.BooleanField(default='')
+    messageFail = models.BooleanField(default=False)
+    messageSuccess = models.BooleanField(default=False)
+    messageToManyFailures = models.BooleanField(default=False)
 
     #save response
-    saveResponse = models.BooleanField(default='')
+    saveResponse = models.BooleanField(default=False)

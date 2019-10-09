@@ -14,7 +14,7 @@ class Cronjob(models.Model):
     timeIntervalMinutes = models.TimeField(default='')
     timeIntervalTime = models.TimeField(default='')
     timeIntervalDay = models.TimeField(default='')
-    timeInvervalDayTime = models.TimeField(default='')
+    timeIntervalDayTime = models.TimeField(default='')
     userDefined = models.BooleanField(default='')
 
     #messages

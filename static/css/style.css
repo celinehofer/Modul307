@@ -1,9 +1,13 @@
 body{
     padding-left: 30px;
 }
+
 #main{
+    padding-top: 30px;
+    padding-bottom: 30px;
     width: 80%;
 }
+
 .card-body{
     border-width: 1px;
     border-style: solid;
@@ -11,9 +15,7 @@ body{
     padding: 0px 15px 10px 15px;
     background-color: honeydew;
 }
-footer{
-    padding-left: 200px;
-}
+
 h3{
     background-color: honeydew;
 }

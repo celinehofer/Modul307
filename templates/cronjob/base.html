@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>Cronjob</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
                     <input type="text" class="form-control" id="title" placeholder="Titel">
 
                 </div>
-                <div class="form-group" >
+                <div class="form-group">
                     <input type="text" class="form-control" id="url" placeholder="https://">
                 </div>
             </form>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Passwort</label>
-                    <input type="text" class="form-control" id="password" placeholder="Password">
+                    <input type="text" class="form-control" id="password" placeholder="Passwort">
                 </div>
             </form>
         </div>
@@ -53,53 +53,73 @@
     <div class="card">
         <div class="card-body">
             <h3 class="execution">Ausführung</h3>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="timeIntervalMinutes" value="option1" checked>
-                    Alle ... Minute(n)
-                </label><br>
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="timeIntervalTime" value="option2" >
-                    Jeden Tag um ...
-                </label><br>
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="timeInvervalDayTime" value="option3" >
-                    Benutzerdefiniert
-                </label><br>
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="userDefined" value="option4" >
-                    Alle ... Minute(n)
-                </label>
-            </div>
-        </div>
-        <br>
-
-        <div class="card">
-            <div class="card-body">
-                <h3 class="messages">Benachrichtigungen</h3>
-                <div class="form-check">
-                    <p>Mich per E-Mail benachrichtigen bei:</p>
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="messagefail">
-                        Fehlschlag des Jobs
-                    </label><br>
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="messagesuccess">
-                        Erfolgreicher Abruf nach vorherigem Fehlschlag
-                    </label><br>
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="messageToManyFailures">
-                        automatische Deaktivierung wegen zu vieler Fehlschläge
-                    </label><br>
+            <div class="row">
+                <div class="col ml-4">
+                    <input class="form-check-input" type="radio" name="timeInterval" value="option1" checked>
+                    <span>Alle</span>
+                    <input type="number" min="1" max="60">
+                    <span> Minute(n)</span>
                 </div>
             </div>
-      </div>
-    </div>
+            <div class="row">
+                <div class="col ml-4">
+                    <input class="form-check-input" type="radio" name="timeInterval" value="option2">
+                    <span>Jeden Tag um </span>
+                    <input type="number" min="1" max="23">
+                    <span> : </span>
+                    <input type="number" min="0" max="59">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col ml-4">
+                    <input class="form-check-input" type="radio" name="timeInterval" value="option3">
+                    <span>Immer am </span>
+                    <input type="number" min="1" max="31">
+                    <span> des Monats um </span>
+                    <input type="number" min="1" max="23">
+                    <span> : </span>
+                    <input type="number" min="0" max="59">
+                </div>
+            </div>
 
+            <div class="row">
+                <div class="col ml-4">
+                    <input class="form-check-input" type="radio" name="timeInterval" value="option4">
+                    <span>Benutzerdefiniert</span>
+                </div>
+            </div>
+        </div>
     </div>
+    <br>
 
+    <div class="card">
+        <div class="card-body">
+            <h3 class="messages">Benachrichtigungen</h3>
+            <p>Mich per E-Mail benachrichtigen bei:</p>
+            <div class="row">
+                <div class="col ml-4">
+            <input class="form-check-input" type="radio" name="message">
+                    <span>Fehlschlag des Jobs</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col ml-4">
+            <input class="form-check-input" type="radio" name="message">
+                    <span>erfolgreichem Aubruf nach vorherigem Fehlschlag</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col ml-4">
+            <input class="form-check-input" type="radio" name="message">
+                    <span>automatische Deaktivierung wegen zu vieler Fehlschläge</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 </body>
- <br>
+<br>
 <footer>
     <p>Thank you for using this Cronjob Template :)</p>
 </footer>

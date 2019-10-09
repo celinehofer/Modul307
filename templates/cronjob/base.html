@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <title>Cronjob</title>
+</head>
+<body>
+<div class="container" id="main">
+    <div class="page-header"><h1 class="title">Cronjob erstellen</h1></div>
+    <p>Füllen Sie das folgende Formular aus, um einen Cronjob anzulegen. Es werden sowohl http- als auch https-URLs
+        unterstützt. Falls die URL mit HTTP-Authentifizierung gesichert ist (z.B. ".htaccess"-Passwortschutz),
+        hinterlegen Sie bitte auch die entsprechenden Zugangsdaten, damit wir die Webseite korrekt abrufen können.</p>
+    <p>Hinweis: Weitere erweiterte Einstellungen für Ihren Cronjob können Sie nach dem Anlegen vornehmen, indem Sie den
+        Job bearbeiten.</p><br>
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="titleAdress">Titel, Adresse</h3>
+            <form>
+                <div class="form-group">
+                    <input type="text" class="form-control" id="title" placeholder="Titel">
+
+                </div>
+                <div class="form-group" >
+                    <input type="text" class="form-control" id="url" placeholder="https://">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="authentification">Erfordert HTTP-Authentifizierung</h3>
+            <form>
+                <div class="form-group">
+                    <label for="userName">Benutzername</label>
+                    <input type="text" class="form-control" id="userName" placeholder="Benutzername">
+                </div>
+                <div class="form-group">
+                    <label for="password">Passwort</label>
+                    <input type="text" class="form-control" id="password" placeholder="Password">
+                </div>
+            </form>
+        </div>
+    </div>
+    <br>
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="execution">Ausführung</h3>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="timeIntervalMinutes" value="option1" checked>
+                    Alle ... Minute(n)
+                </label><br>
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="timeIntervalTime" value="option2" >
+                    Jeden Tag um ...
+                </label><br>
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="timeInvervalDayTime" value="option3" >
+                    Benutzerdefiniert
+                </label><br>
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="userDefined" value="option4" >
+                    Alle ... Minute(n)
+                </label>
+            </div>
+        </div>
+        <br>
+
+        <div class="card">
+            <div class="card-body">
+                <h3 class="messages">Benachrichtigungen</h3>
+                <div class="form-check">
+                    <p>Mich per E-Mail benachrichtigen bei:</p>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="messagefail">
+                        Fehlschlag des Jobs
+                    </label><br>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="messagesuccess">
+                        Erfolgreicher Abruf nach vorherigem Fehlschlag
+                    </label><br>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="messageToManyFailures">
+                        automatische Deaktivierung wegen zu vieler Fehlschläge
+                    </label><br>
+                </div>
+            </div>
+      </div>
+    </div>
+
+    </div>
+
+</body>
+ <br>
+<footer>
+    <p>Thank you for using this Cronjob Template :)</p>
+</footer>
+</html>

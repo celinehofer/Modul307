@@ -1,0 +1,17 @@
+body{
+    padding-left: 30px;
+}
+#main{
+    width: 80%;
+}
+
+.card-body{
+    border-width: 1px;
+    border-style: solid;
+    border-color: lightgreen;
+    padding: 0px 15px 10px 15px;
+}
+footer{
+    padding-left: 160px;
+}
+

@@ -1,20 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" class="full-height">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <!--Import CSS-File and Bootstrap-->
+         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Cron-Job</title>
-    <span>Login</span> <span>Registration</span>
-</head>
 
+<!--Header Navigation-->
+
+
+<!--Footer base-->
 {% block content %} {% endblock content %}
-
 <footer>
-    Thanks for using this tempalte.
+    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+        <span>Céline Hofer</span>
+  </div>
 </footer>
-
 </html>

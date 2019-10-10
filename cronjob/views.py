@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Cronjob
+#def login(request):
 
 
 def index(request):
+    return render(request, "cronjob/home.html")
+
+
+def cronjobs(request):
     if request.method == 'POST':
         job = Cronjob()
         job.title = request.POST.get("title")

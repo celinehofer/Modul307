@@ -1,3 +1,5 @@
+/*cronsite*/
+
 #main{
     padding-top: 30px;
     padding-bottom: 30px;
@@ -28,7 +30,9 @@ h3{
     }
 
 
+/*home*/
+h1{    width: 60%;
+}
 
-
-
+/*Header base*/
 

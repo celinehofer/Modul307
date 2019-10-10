@@ -1,11 +1,19 @@
 {% extends 'base.html' %}
 {% load static %}
 <!DOCTYPE html>
+<html lang="en">
+<body>
+{% block title %}Login{% endblock %}
+
 {% block content %}
-    <html lang="en">
-    <body>
-
-
-    </body>
+    <div class="container">
+     <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Login</button>
+    </form>
+    </div>
+       </body>
     </html>
 {% endblock content %}

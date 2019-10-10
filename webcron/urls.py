@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
-from cronjob import views
+from django.urls import path, include
+from cronjob import views as cronjobViews
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.index, name="homepage")
+    path('cronjobs', cronjobViews.cronjobs, name="cronjobs"),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('', cronjobViews.index, name='home'),
 ]

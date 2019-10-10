@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+{% csrf_token %}
+<html lang="en">
+    <meta charset="UTF-8">
+<body>
+{% block content %}
+    {% block title %}<h1>Wilkommen</h1>{% endblock %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+    <p></p>
+    <p><a href="{% url "logout" %}">logout</a></p>
+{% else %}
+  <p>Um das Cron-Job Formular zu verwenden, loggen Sie sich bitte ein:</p>
+  <a href="{% url 'login' %}">Zum Login</a>
+    <p></p>
+    <p>Falls Sie noch kein Login haben, können Sie sich hier registrieren:</p>
+{% endif %}
+{% endblock %}
+</body>
+</html>

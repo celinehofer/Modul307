@@ -28,6 +28,9 @@ class Cronjob(models.Model):
     #save response
     saveResponse = models.BooleanField(default=False)
 
+    def __str__(self):
+        return f"{self.title}, {self.url}"
+
 
 # class Accounts(models.Model):
 #     userNameLogin = models.CharField(max_length=255, null=False, default='')

@@ -37,6 +37,6 @@ def index(request):
 
         job.save()
 
-        return render(request, "cronjob/base.html")
+        return render(request, "cronjob/cronsite.html")
     else:
-        return render(request, "cronjob/base.html")
+        return render(request, "cronjob/cronsite.html")

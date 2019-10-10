@@ -1,11 +1,14 @@
-body{
-    padding-left: 30px;
-}
-
 #main{
     padding-top: 30px;
     padding-bottom: 30px;
     width: 60%;
+}
+footer{
+    width: 60%;
+}
+
+h3{
+    background-color: honeydew;
 }
 
 .card-body{
@@ -16,11 +19,16 @@ body{
     background-color: honeydew;
 }
 
-h3{
-    background-color: honeydew;
-}
+.container{
+    padding-right: 100px;
+    padding-left: 50px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: whitesmoke;
+    }
 
-#textBox{
-    text-align: justify;
-}
+
+
+
+
 

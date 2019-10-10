@@ -5,38 +5,38 @@ from .models import Cronjob
 
 def index(request):
     if request.method == 'POST':
-            cronjob = Cronjob()
-            cronjob.title = request.POST.get("title")
-            cronjob.url = request.POST.get("url")
-            cronjob.userName = request.POST.get("userName")
-            cronjob.password = request.POST.get("password")
-            cronjob.saveResponse = request.POST.get("response1")
-            cronjob.save()
+        job = Cronjob()
+        job.title = request.POST.get("title")
+        job.url = request.POST.get("url")
+        job.userName = request.POST['userName']
+        job.password = request.POST["password"]
+        intervalString = ''
 
-            return render(request, "cronjob/base.html")
+        choice = request.POST['timeInterval']
+        if choice == 'option1':
+            minute = request.POST['option1MinuteInput']
+            intervalString = minute + ' * * * *'
+        elif choice == 'option2':
+            minute = request.POST['option2MinuteInput']
+            hour = request.POST['option2HourInput']
+            intervalString = minute + ' ' + hour + ' * * *'
+        elif choice == 'option3':
+            minute = request.POST['option3MinuteInput']
+            hour = request.POST['option3HourInput']
+            day = request.POST['option3DayInput']
+            intervalString = minute + ' ' + hour + ' ' + day + ' * *'
+        elif choice == 'option4':
+            customInput = request.POST['userDefinedInput']
+            intervalString = customInput
+
+        job.interval = intervalString
+        job.messageFail = request.POST.get('messageFail', 0)
+        job.messageSuccess = request.POST.get('messageSuccess', 0)
+        job.messageToManyFailures = request.POST.get('messageTotalyFail', 0)
+        job.saveResponse = request.POST.get('saveResponse', 0)
+
+        job.save()
+
+        return render(request, "cronjob/base.html")
     else:
         return render(request, "cronjob/base.html")
-
-
-
-
-
-
-# title=request.POST.get("title"),
-    # url = request.POST.get("url"),
-    #
-    # userName = request.POST.get("userName"),
-    # password = request.POST.get("password"),
-    #
-    # timeIntervalMinutes = request.POST.get("message"),
-    # timeIntervalTime = request.POST.get("message"),
-    # timeIntervalDay = request.POST.get("message"),
-    # timeIntervalDayTime = request.POST.get("message"),
-    # userDefined = request.POST.get("message"),
-    #
-    # messageFail = request.POST.get("title"),
-    # messageSuccess = request.POST.get("title"),
-    # messageToManyFailures = request.POST.get("title"),
-    #
-    # saveResponse = request.POST.get("title")
-

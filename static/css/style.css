@@ -12,11 +12,15 @@ body{
     border-width: 1px;
     border-style: solid;
     border-color: lightgreen;
-    padding: 0px 15px 10px 15px;
+    padding: 0 15px 10px 15px;
     background-color: honeydew;
 }
 
 h3{
     background-color: honeydew;
+}
+
+#textBox{
+    text-align: justify;
 }
 

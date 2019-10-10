@@ -12,7 +12,7 @@
 
 <form action="{% url 'index' %}" method="POST">
     {% csrf_token %}
-<table id="dfkdlfj"> </table>
+    <table id="dfkdlfj"></table>
     <div class="container" id="main">
         <div class="page-header"><h1 class="title">Cron-Job erstellen</h1></div>
         <p>Füllen Sie das folgende Formular aus, um einen Cron-Job anzulegen. Es werden sowohl http- als auch https-URLs
@@ -20,21 +20,17 @@
             hinterlegen Sie bitte auch die entsprechenden Zugangsdaten, damit wir die Webseite korrekt abrufen
             können.</p>
         <p>Hinweis: Weitere erweiterte Einstellungen für Ihren Cron-Job können Sie nach dem Anlegen vornehmen, indem Sie
-            den
-            Job bearbeiten.</p>
+            den Job bearbeiten.</p>
 
         <div class="card">
             <div class="card-body">
                 <h3 class="titleAdress">Titel, Adresse</h3>
-                <form>
-                    <div class="form-group">
+                             <div class="form-group">
                         <input type="text" name="title" class="form-control" id="title" placeholder="Titel">
-
                     </div>
                     <div class="form-group">
-                        <input type="text" name="url" class="form-control" id="url" placeholder="https://">
+                        <input type="text" name="url" class="form-control" id="url" placeholder="https://" value="https://">
                     </div>
-                </form>
             </div>
         </div>
         <br>
@@ -42,16 +38,14 @@
         <div class="card">
             <div class="card-body">
                 <h3 class="authentification">Erfordert HTTP-Authentifizierung</h3>
-                <form>
                     <div class="form-group">
                         <label for="userName">Benutzername</label>
-                        <input type="text" class="form-control" id="userName" placeholder="Benutzername">
+                        <input type="text" class="form-control" name="userName" id="userName" placeholder="Benutzername">
                     </div>
                     <div class="form-group">
                         <label for="password">Passwort</label>
-                        <input type="text" class="form-control" id="password" placeholder="Passwort">
+                        <input type="password" class="form-control" name="password" id="password" placeholder="Passwort">
                     </div>
-                </form>
             </div>
         </div>
         <br>
@@ -60,10 +54,10 @@
             <div class="card-body">
                 <h3 class="execution">Ausführung</h3>
                 <div class="row">
-                    <div class="col ml-4 mb-1" >
+                    <div class="col ml-4 mb-1">
                         <input class="form-check-input" type="radio" name="timeInterval" value="option1" checked>
                         <span>Alle</span>
-                        <input type="number" min="1" max="60">
+                        <input type="number" min="1" max="60" name="option1MinuteInput">
                         <span> Minute(n)</span>
                     </div>
                 </div>
@@ -71,27 +65,27 @@
                     <div class="col ml-4 mb-1">
                         <input class="form-check-input" type="radio" name="timeInterval" value="option2">
                         <span>Jeden Tag um </span>
-                        <input type="number" min="1" max="23">
+                        <input type="number" min="1" max="23" name="option2HourInput">
                         <span> : </span>
-                        <input type="number" min="0" max="59">
+                        <input type="number" min="0" max="59" name="option2MinuteInput">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col ml-4 mb-1">
                         <input class="form-check-input" type="radio" name="timeInterval" value="option3">
                         <span>Immer am </span>
-                        <input type="number" min="1" max="31">
+                        <input type="number" min="1" max="31" name="option3DayInput">
                         <span> des Monats um </span>
-                        <input type="number" min="1" max="23">
+                        <input type="number" min="1" max="23" name="option3HourInput">
                         <span> : </span>
-                        <input type="number" min="0" max="59">
+                        <input type="number" min="0" max="59" name="option3MinuteInput">
                     </div>
                 </div>
-
                 <div class="row">
-                    <div class="col ml-4">
+                    <div class="col ml-4 mb-1">
                         <input class="form-check-input" type="radio" name="timeInterval" value="option4">
                         <span>Benutzerdefiniert</span>
+                        <input type="text" value="* * * * * " placeholder="* * * * *" size="8px" maxlength="9" id="textBox" name="userDefinedInput">
                     </div>
                 </div>
             </div>
@@ -104,19 +98,19 @@
                 <p>Mich per E-Mail benachrichtigen bei:</p>
                 <div class="row">
                     <div class="col ml-4 mb-1">
-                        <input class="form-check-input" type="radio" name="message" value="message1" checked>
+                        <input class="form-check-input" type="checkbox" name="messageFail" value="1">
                         <span>Fehlschlag des Jobs</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col ml-4 mb-1">
-                        <input class="form-check-input" type="radio" name="message" value="message2">
+                        <input class="form-check-input" type="checkbox" name="messageSuccess" value="1">
                         <span>erfolgreichem Abruf nach vorherigem Fehlschlag</span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col ml-4">
-                        <input class="form-check-input" type="radio" name="message" value="message3">
+                        <input class="form-check-input" type="checkbox" name="messageTotalyFail" value="1">
                         <span>automatische Deaktivierung wegen zu vieler Fehlschläge</span>
                     </div>
                 </div>
@@ -129,7 +123,7 @@
                 <h3 class="messages">Allgemein</h3>
                 <div class="row">
                     <div class="col ml-4">
-                        <input class="form-check-input" type="radio" name="saveResponse" value="response1">
+                        <input class="form-check-input" type="checkbox" name="saveResponse" value="1">
                         <span>Antworten speichern</span>
                     </div>
                 </div>
@@ -143,7 +137,4 @@
     </div>
 </form>
 </body>
-<footer>
-    <p>Thank you for using this Cronjob Template :)</p>
-</footer>
 </html>

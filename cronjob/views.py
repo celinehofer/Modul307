@@ -4,12 +4,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from .models import Cronjob
+from django.contrib import messages
 
 
+# transfer to startsite
 def index(request):
     return render(request, "cronjob/home.html")
 
 
+# get the informations from the template and save them to the database
+# render to the mention site
+# logic for the messages (template send ok/nok)
 @login_required()
 def cronjobs(request):
     if request.method == 'POST':
@@ -23,18 +28,30 @@ def cronjobs(request):
         choice = request.POST['timeInterval']
         if choice == 'option1':
             minute = request.POST['option1MinuteInput']
+            if minute == '':
+                messages.error(request, 'Bitte überprüfen Sie Ihre Eingabe')
+                return render(request, "cronjob/cronsite.html")
             intervalString = minute + ' * * * *'
         elif choice == 'option2':
             minute = request.POST['option2MinuteInput']
             hour = request.POST['option2HourInput']
+            if minute or hour == '':
+                messages.error(request, 'Bitte überprüfen Sie Ihre Eingabe')
+                return render(request, "cronjob/cronsite.html")
             intervalString = minute + ' ' + hour + ' * * *'
         elif choice == 'option3':
             minute = request.POST['option3MinuteInput']
             hour = request.POST['option3HourInput']
             day = request.POST['option3DayInput']
+            if minute or hour or day == '':
+                messages.error(request, 'Bitte überprüfen Sie Ihre Eingabe')
+                return render(request, "cronjob/cronsite.html")
             intervalString = minute + ' ' + hour + ' ' + day + ' * *'
         elif choice == 'option4':
             customInput = request.POST['userDefinedInput']
+            if customInput == '':
+                messages.error(request, 'Bitte überprüfen Sie Ihre Eingabe')
+                return render(request, "cronjob/cronsite.html")
             intervalString = customInput
 
         job.interval = intervalString
@@ -45,17 +62,15 @@ def cronjobs(request):
 
         job.save()
 
-        printOK = "gut"
-        if job.id:
-            printOK = "Ihr Cron-Job wurde erfolgreich gespeichert."
-
-        return render(request, "cronjob/cronsite.html", {"message": printOK})
+        messages.success(request, 'Ihr Cron-Job wurde erfolgreich gespeichert. 👻.')
+        return render(request, "cronjob/cronsite.html")
 
     else:
-        printNOK = "Ihr Cron-Job konnte nicht gespeichert werden."
-        return render(request, "cronjob/cronsite.html", {"message2": printNOK})
+        return render(request, "cronjob/cronsite.html")
 
 
+# logic for the restistration, saves the new users
+# render to the mention site
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)

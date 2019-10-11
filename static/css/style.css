@@ -1,21 +1,21 @@
-/*cronsite*/
-
-#main{
+/*moves the content from the cronsite on the rigth place */
+#main {
     padding-top: 30px;
     padding-bottom: 30px;
     width: 60%;
 }
 
-.card-body{
+/*style and position for the cards-fields of the cronjob-template */
+.card-body {
     border-width: 1px;
     border-style: solid;
     border-color: #E6F8E0;
     padding: 0 15px 10px 15px;
     background-color: #EFFBEF;
-
 }
 
-#footer{
+/*fixing the footer, that he will not anymore change to the left */
+#footer {
     position: fixed;
     bottom: 0;
     width: 100%

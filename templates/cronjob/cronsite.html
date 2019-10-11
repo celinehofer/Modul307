@@ -16,16 +16,17 @@
                 hinterlegen Sie bitte auch die entsprechenden Zugangsdaten, damit wir die Webseite korrekt abrufen
                 können.</p>
             <p>Hinweis: Weitere erweiterte Einstellungen für Ihren Cron-Job können Sie nach dem Anlegen vornehmen, indem
-                Sie
-                den Job bearbeiten.</p>
-
-            <div class="alert alert-success" role="alert">
-                {{ message }}
-            </div>
-            <div class="alert alert-danger" role="alert">
-                {{ message2 }}
-            </div>
-
+                Sie den Job bearbeiten.</p>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissable" role="alert">
+                        <button class="close" data-dismiss="alert">
+                            <small><sup>x</sup></small>
+                        </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
 
             <div class="card">
                 <div class="card-body">
@@ -64,11 +65,10 @@
                     <div class="row">
                         <div class="col mb-1">
                             <label>
-                                <input class="rb" type="radio" name="timeInterval" value="option1">
-                            </label>
-                            <span>Alle</span>
-                            <label>
-                                <input type="number" min="1" max="60" name="option1MinuteInput">
+                                <input type="radio" name="timeInterval" value="option1"
+                                       onclick="radioButtons('option1')" id="option1">
+                                <span>Alle</span>
+                                <input class="rb option1" type="number" min="1" max="60" name="option1MinuteInput">
                             </label>
                             <span> Minute(n)</span>
                         </div>
@@ -76,46 +76,39 @@
                     <div class="row">
                         <div class="col mb-1">
                             <label>
-                                <input class="rb" type="radio" name="timeInterval" value="option2">
-                            </label>
-                            <span>Jeden Tag um </span>
-                            <label>
-                                <input type="number" min="1" max="23" name="option2HourInput">
-                            </label>
-                            <span> : </span>
-                            <label>
-                                <input type="number" min="0" max="59" name="option2MinuteInput">
+                                <input type="radio" name="timeInterval" value="option2"
+                                       onclick="radioButtons('option2')">
+                                <span>Jeden Tag um </span>
+                                <input class="rb option2" type="number" min="1" max="23" name="option2HourInput">
+                                <span> : </span>
+                                <input class="rb option2" type="number" min="0" max="59" name="option2MinuteInput">
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-1">
                             <label>
-                                <input class="rb" type="radio" name="timeInterval" value="option3">
-                            </label>
-                            <span>Immer am </span>
-                            <label>
-                                <input type="number" min="1" max="31" name="option3DayInput">
-                            </label>
-                            <span> des Monats um </span>
-                            <label>
-                                <input type="number" min="1" max="23" name="option3HourInput">
-                            </label>
-                            <span> : </span>
-                            <label>
-                                <input type="number" min="0" max="59" name="option3MinuteInput">
+                                <input type="radio" name="timeInterval" value="option3"
+                                       onclick="radioButtons('option3')">
+                                <span>Immer am </span>
+                                <input class="rb option3" type="number" min="1" max="31" name="option3DayInput">
+                                <span> des Monats um </span>
+                                <input class="rb option3" type="number" min="1" max="23" name="option3HourInput">
+                                <span> : </span>
+                                <input class="rb option3" type="number" min="0" max="59" name="option3MinuteInput">
                             </label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col mb-1">
                             <label>
-                                <input class="rb" type="radio" name="timeInterval" value="option4">
+                                <input type="radio" name="timeInterval" value="option4"
+                                       onclick="radioButtons('option4')">
+                                <span>Benutzerdefiniert</span>
+                                <label for="textBox"></label>
+                                <input class="rb option4" type="text" placeholder="* * * * *" size="8px"
+                                       maxlength="9" id="textBox" name="userDefinedInput">
                             </label>
-                            <span>Benutzerdefiniert</span>
-                            <label for="textBox"></label><input type="text" placeholder="* * * * *" size="8px"
-                                                                maxlength="9"
-                                                                id="textBox" name="userDefinedInput">
                         </div>
                     </div>
                 </div>

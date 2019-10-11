@@ -36,3 +36,11 @@ h1{    width: 60%;
 
 /*Header base*/
 
+#navigation{
+    width: 100%;
+}
+
+head{
+    font-color: white;
+
+}

@@ -1,21 +1,54 @@
+<!--header and footer content for all sites -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" class="full-height">
 <head>
     <meta charset="UTF-8">
+
     <!--Import CSS-File and Bootstrap-->
-         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-<!--Header Navigation-->
+    <!-- jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% static "js/script.js" %}"></script>
 
+    <!--Header Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #0B6121">
+        <a class="navbar-brand" href="{% url 'home' %}">WebCron</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText"
+                aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'cronjobs' %}">Cron-Job <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            <span class="navbar-text">
+                {% if user.is_authenticated %}
+                    <span class="mr-3">Angemeldet als: {{ user.username }}</span>
+                    <span> <a href="{% url 'logout' %}">Logout</a></span>
+                {% else %}
+                    <span class="mr-3"><a href="{% url 'login' %}">Login</a></span>
+                    <span> <a href="{% url 'signup' %}">Registrieren</a></span>
+                {% endif %}
+          </span>
+        </div>
+    </nav>
+    <title></title>
 
-<!--Footer base-->
+    <!-- Body-->
+<body>
 {% block content %} {% endblock content %}
+</body>
+
+<!--Footer-->
 <footer>
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <div class="footer-copyright text-center" id="footer">© 2019 Copyright:
         <span>Céline Hofer</span>
-  </div>
+    </div>
 </footer>
 </html>

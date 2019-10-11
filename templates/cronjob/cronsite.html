@@ -16,18 +16,27 @@
                 hinterlegen Sie bitte auch die entsprechenden Zugangsdaten, damit wir die Webseite korrekt abrufen
                 können.</p>
             <p>Hinweis: Weitere erweiterte Einstellungen für Ihren Cron-Job können Sie nach dem Anlegen vornehmen, indem
-                Sie
-                den Job bearbeiten.</p>
+                Sie den Job bearbeiten.</p>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissable" role="alert">
+                        <button class="close" data-dismiss="alert">
+                            <small><sup>x</sup></small>
+                        </button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
 
             <div class="card">
                 <div class="card-body">
                     <h3 class="titleAdress">Titel, Adresse</h3>
                     <div class="form-group">
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Titel">
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Titel" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="url" class="form-control" id="url" placeholder="https://"
-                               value="https://">
+                        <input type="url" name="url" class="form-control" id="url" placeholder="https://"
+                               required>
                     </div>
                 </div>
             </div>
@@ -54,39 +63,52 @@
                 <div class="card-body">
                     <h3 class="execution">Ausführung</h3>
                     <div class="row">
-                        <div class="col ml-4 mb-1">
-                            <input class="form-check-input" type="radio" name="timeInterval" value="option1" checked>
-                            <span>Alle</span>
-                            <input type="number" min="1" max="60" name="option1MinuteInput">
+                        <div class="col mb-1">
+                            <label>
+                                <input type="radio" name="timeInterval" value="option1"
+                                       onclick="radioButtons('option1')" id="option1">
+                                <span>Alle</span>
+                                <input class="rb option1" type="number" min="1" max="60" name="option1MinuteInput">
+                            </label>
                             <span> Minute(n)</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col ml-4 mb-1">
-                            <input class="form-check-input" type="radio" name="timeInterval" value="option2">
-                            <span>Jeden Tag um </span>
-                            <input type="number" min="1" max="23" name="option2HourInput">
-                            <span> : </span>
-                            <input type="number" min="0" max="59" name="option2MinuteInput">
+                        <div class="col mb-1">
+                            <label>
+                                <input type="radio" name="timeInterval" value="option2"
+                                       onclick="radioButtons('option2')">
+                                <span>Jeden Tag um </span>
+                                <input class="rb option2" type="number" min="1" max="23" name="option2HourInput">
+                                <span> : </span>
+                                <input class="rb option2" type="number" min="0" max="59" name="option2MinuteInput">
+                            </label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col ml-4 mb-1">
-                            <input class="form-check-input" type="radio" name="timeInterval" value="option3">
-                            <span>Immer am </span>
-                            <input type="number" min="1" max="31" name="option3DayInput">
-                            <span> des Monats um </span>
-                            <input type="number" min="1" max="23" name="option3HourInput">
-                            <span> : </span>
-                            <input type="number" min="0" max="59" name="option3MinuteInput">
+                        <div class="col mb-1">
+                            <label>
+                                <input type="radio" name="timeInterval" value="option3"
+                                       onclick="radioButtons('option3')">
+                                <span>Immer am </span>
+                                <input class="rb option3" type="number" min="1" max="31" name="option3DayInput">
+                                <span> des Monats um </span>
+                                <input class="rb option3" type="number" min="1" max="23" name="option3HourInput">
+                                <span> : </span>
+                                <input class="rb option3" type="number" min="0" max="59" name="option3MinuteInput">
+                            </label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col ml-4 mb-1">
-                            <input class="form-check-input" type="radio" name="timeInterval" value="option4">
-                            <span>Benutzerdefiniert</span>
-                            <input type="text" value="* * * * * " placeholder="* * * * *" size="8px" maxlength="9"
-                                   id="textBox" name="userDefinedInput">
+                        <div class="col mb-1">
+                            <label>
+                                <input type="radio" name="timeInterval" value="option4"
+                                       onclick="radioButtons('option4')">
+                                <span>Benutzerdefiniert</span>
+                                <label for="textBox"></label>
+                                <input class="rb option4" type="text" placeholder="* * * * *" size="8px"
+                                       maxlength="9" id="textBox" name="userDefinedInput">
+                            </label>
                         </div>
                     </div>
                 </div>
@@ -123,7 +145,7 @@
                 <div class="card-body">
                     <h3 class="messages">Allgemein</h3>
                     <div class="row">
-                        <div class="col ml-4">
+                        <div class="col ml-4 mt-2">
                             <input class="form-check-input" type="checkbox" name="saveResponse" value="1">
                             <span>Antworten speichern</span>
                         </div>
@@ -134,8 +156,7 @@
             <p>Mit der Erstellung des Cron-Jobs erklären Sie, dass Sie entweder der Inhaber der abzurufenden Webseite
                 sind
                 oder im Einverständnis des Inhabers handeln.</p>
-            <button type="submit"> Cron-Job erstellen</button>
-        </div>
+            <button type="submit" class="btn btn-success"> Cron-Job erstellen</button>
         </div>
     </form>
     </body>

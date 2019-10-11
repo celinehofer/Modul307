@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-{% csrf_token %}
-<html lang="en">
-    <meta charset="UTF-8">
-<body>
 {% block content %}
-    {% block title %}<h1>Wilkommen</h1>{% endblock %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-    <p></p>
-    <p><a href="{% url "logout" %}">logout</a></p>
-{% else %}
-  <p>Um das Cron-Job Formular zu verwenden, loggen Sie sich bitte ein:</p>
-  <a href="{% url 'login' %}">Zum Login</a>
-    <p></p>
-    <p>Falls Sie noch kein Login haben, können Sie sich hier registrieren:</p>
-{% endif %}
+
+    <div class="container mt-5">
+        <h1>Wilkommen bei WebCron</h1>
+        <p></p>
+        {% if user.is_authenticated %}
+            <h5>Hallo {{ user.username }}!</h5>
+            <br>
+            <h5>Erstelle hier ganze einfach einen Cron-Job:</h5>
+            <h5><a href="{% url "cronjobs" %}">Zum Cron-Job</a></h5>
+        {% else %}
+            <h5>Erstellen Sie hier Ihren Cron-Job ganz einfach per Formular!</h5>
+            <br>
+            <h5>Bitte loggen Sie sich dazu ein:</h5>
+            <h5><a href="{% url 'login' %}">Zum Login</a></h5>
+            <br><br>
+            <h5>Falls Sie noch kein Login haben, können Sie sich hier registrieren:</h5>
+            <h5><a href="{% url 'signup' %}">Registrieren</a></h5>
+        {% endif %}
+    </div>
+
 {% endblock %}
-</body>
-</html>
+

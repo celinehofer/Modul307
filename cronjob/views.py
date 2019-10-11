@@ -62,7 +62,7 @@ def cronjobs(request):
 
         job.save()
 
-        messages.success(request, 'Ihr Cron-Job wurde erfolgreich gespeichert. 👻.')
+        messages.success(request, 'Ihr Cron-Job wurde erfolgreich gespeichert.')
         return render(request, "cronjob/cronsite.html")
 
     else:

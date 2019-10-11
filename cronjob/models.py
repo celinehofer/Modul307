@@ -5,15 +5,15 @@ from django.utils import timezone
 
 class Cronjob(models.Model):
     #title, adress
-    title = models.CharField(max_length=255, null=False, default='')
-    url = models.CharField(max_length=255, null=False, default='')
+    title = models.CharField(max_length=255, null=True, default='')
+    url = models.CharField(max_length=255, null=True, default='')
 
     #login
     userName = models.CharField(max_length=255, null=False, default='')
     password = models.CharField(max_length=255, null=False, default='')
 
     #set time and date for interval
-    interval = models.CharField(max_length=255, null=False, default='default')
+    interval = models.CharField(max_length=255, null=True, default='default')
     # timeIntervalMinutes = models.CharField(max_length=30, null=True, default='')
     # timeIntervalTime = models.CharField(max_length=30, null=True, default='')
     # timeIntervalDay = models.CharField(max_length=30, null=True, default='')

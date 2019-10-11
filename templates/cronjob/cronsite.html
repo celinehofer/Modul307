@@ -23,11 +23,11 @@
                 <div class="card-body">
                     <h3 class="titleAdress">Titel, Adresse</h3>
                     <div class="form-group">
-                        <input type="text" name="title" class="form-control" id="title" placeholder="Titel">
+                        <input type="text" name="title" class="form-control" id="title" placeholder="Titel" required>
                     </div>
                     <div class="form-group">
                         <input type="text" name="url" class="form-control" id="url" placeholder="https://"
-                               value="https://">
+                               value="https://" required>
                     </div>
                 </div>
             </div>
@@ -134,7 +134,7 @@
             <p>Mit der Erstellung des Cron-Jobs erklären Sie, dass Sie entweder der Inhaber der abzurufenden Webseite
                 sind
                 oder im Einverständnis des Inhabers handeln.</p>
-            <button type="submit"> Cron-Job erstellen</button>
+            <button type="submit" class="btn btn-success"> Cron-Job erstellen</button>
         </div>
         </div>
     </form>

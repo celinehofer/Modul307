@@ -1,13 +1,14 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Cronjob
-#def login(request):
 
 
 def index(request):
     return render(request, "cronjob/home.html")
 
 
+@login_required()
 def cronjobs(request):
     if request.method == 'POST':
         job = Cronjob()

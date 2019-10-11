@@ -6,7 +6,7 @@ from django.utils import timezone
 class Cronjob(models.Model):
     #title, adress
     title = models.CharField(max_length=255, null=True, default='')
-    url = models.CharField(max_length=255, null=True, default='')
+    url = models.URLField(max_length=255, null=True, default='')
 
     #login
     userName = models.CharField(max_length=255, null=False, default='')

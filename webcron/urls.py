@@ -20,7 +20,8 @@ from cronjob import views as cronjobViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', cronjobViews.index, name='home'),
     path('cronjobs', cronjobViews.cronjobs, name="cronjobs"),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', cronjobViews.index, name='home'),
-]
+    path('signup', cronjobViews.signup, name="signup"),
+  ]

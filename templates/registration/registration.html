@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Registration{% endblock title %}
+
+{% block content %}
+
+        <div class="container mt-5">
+            <h2>Login erstellen</h2>
+            <p>Bitte füllen Sie folgende Felder aus, um ein Login zu erstellen:</p><br>
+        </div>
+
+  <div class="container">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Registrieren</button>
+    </form>
+</div>
+
+        <div class="container signin mt-5">
+            <p>Sie haben bereits ein Login? <a href="{% url 'login' %}">Einloggen</a></p>
+        </div>
+
+{% endblock content %}

@@ -17,10 +17,16 @@ from django.contrib import admin
 from django.urls import path, include
 from cronjob import views as cronjobViews
 
+# admin url
+# url for the startsite
+# url for the cronjob-site with the template
+# urls for the login / logout site
+# url for the restistration / sign up site
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', cronjobViews.index, name='home'),
     path('cronjobs', cronjobViews.cronjobs, name="cronjobs"),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('', cronjobViews.index, name='home'),
+    path('signup', cronjobViews.signup, name="signup"),
 ]

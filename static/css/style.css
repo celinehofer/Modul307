@@ -1,38 +1,22 @@
-/*cronsite*/
-
-#main{
+/*moves the content from the cronsite on the rigth place */
+#main {
     padding-top: 30px;
     padding-bottom: 30px;
     width: 60%;
 }
-footer{
-    width: 60%;
-}
 
-h3{
-    background-color: honeydew;
-}
-
-.card-body{
+/*style and position for the cards-fields of the cronjob-template */
+.card-body {
     border-width: 1px;
     border-style: solid;
-    border-color: lightgreen;
+    border-color: #E6F8E0;
     padding: 0 15px 10px 15px;
-    background-color: honeydew;
+    background-color: #EFFBEF;
 }
 
-.container{
-    padding-right: 100px;
-    padding-left: 50px;
-    border-width: 1px;
-    border-style: solid;
-    border-color: whitesmoke;
-    }
-
-
-/*home*/
-h1{    width: 60%;
+/*fixing the footer, that he will not anymore change to the left */
+#footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%
 }
-
-/*Header base*/
-

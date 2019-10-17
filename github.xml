@@ -3,5 +3,8 @@
     <account id="9f5f6fdd-dd9e-4b0e-a449-6b0bcd344f10" name="c.line.hofer@bluewin.ch">
       <server host="github.com" />
     </account>
+    <account id="3af80b1f-86fe-4654-a13c-a05366f62f43" name="c.line.hofer@bluewin.ch">
+      <server useHttp="false" host="github.com" />
+    </account>
   </component>
 </application>
